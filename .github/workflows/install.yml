@@ -1,0 +1,21 @@
+name: Homebrew install
+on: [push, pull_request, workflow_dispatch]
+permissions:
+  contents: read
+jobs:
+  install:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Tap and install stable
+        run: |
+          brew tap TheDutchSmoke/sofastream https://github.com/TheDutchSmoke/homebrew-sofastream.git
+          brew install --build-from-source TheDutchSmoke/sofastream/sofastream
+          brew test TheDutchSmoke/sofastream/sofastream
+      - name: Install @dev alongside stable
+        if: ${{ hashFiles('Aliases/sofastream@dev') != '' }}
+        run: |
+          brew install --build-from-source TheDutchSmoke/sofastream/sofastream@dev
+          brew test TheDutchSmoke/sofastream/sofastream@dev
+          tv --version
+          tv-dev --version
