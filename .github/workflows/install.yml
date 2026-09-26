@@ -13,8 +13,9 @@ jobs:
           brew install --build-from-source TheDutchSmoke/sofastream/sofastream
           brew test TheDutchSmoke/sofastream/sofastream
       - name: Install @dev alongside stable
-        if: ${{ hashFiles('Aliases/sofastream@dev') != '' }}
+        if: ${{ hashFiles('Formula/sofastream-preview.rb') != '' }}
         run: |
+          brew trust --formula TheDutchSmoke/sofastream/sofastream-preview
           brew install --build-from-source TheDutchSmoke/sofastream/sofastream@dev
           brew test TheDutchSmoke/sofastream/sofastream@dev
           tv --version
