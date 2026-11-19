@@ -1,12 +1,13 @@
 class Sofastream < Formula
   desc "Twitch on Apple TV from a macOS terminal"
   homepage "https://github.com/TheDutchSmoke/sofastream"
-  url "https://github.com/TheDutchSmoke/sofastream/archive/refs/tags/v0.2.3.tar.gz"
-  version "0.2.3"
-  sha256 "8e7152d09f5047504052333dceedff70d7141f44ed9bafa18f12894d3a3675ee"
+  url "https://github.com/TheDutchSmoke/sofastream/archive/refs/tags/v0.3.0.tar.gz"
+  version "0.3.0"
+  sha256 "5c94ad989a7d50b32f4699f856ac8276b8b988949b224b94143c00cfdca3f79a"
   license "MIT"
 
   depends_on :macos
+  depends_on "ffmpeg"
   depends_on "fzf"
   depends_on "node"
   depends_on "python@3.14"
